@@ -1,0 +1,118 @@
+ion-menu {
+  width: max-content;
+}
+
+.profile-item {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #f7f8fa;
+  border-radius: 10px;
+  border: 1px solid black; 
+}
+
+.profile-item h2 {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.profile-item p {
+  font-size: 14px;
+  color: #6c757d;
+  margin: 0;
+}
+
+ion-avatar img {
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  border: 1px solid black; 
+}
+
+ion-icon {
+  font-size: 22px;
+  color: #333;
+}
+
+/* internship */
+ion-header, ion-toolbar {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border: 1px solid black; 
+}
+
+/* TITLE CAT LISTING AND INTERNSHIP PROJECT */
+ion-title {
+  text-align: center;
+  width: 100%;
+  font-size: 20px;
+  font-weight: bold;
+  color: #964B00; 
+}
+
+ion-content {
+  --padding-start: 16px;
+  --padding-end: 16px;
+  --padding-bottom: 20px;
+  background-color: #f7f8fa; /* Light background color */
+}
+
+/* Table  */
+.cat-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+}
+
+.cat-table th, .cat-table td {
+  border: 1px solid black; 
+  padding: 8px;
+  text-align: left;
+}
+
+.cat-table th {
+  background-color: #e9ecef; 
+  font-weight: bold;
+  color: #333; 
+}
+
+.cat-table tr:nth-child(even) {
+  background-color: #f2f2f2; /* Light row color */
+}
+
+.cat-table tr:nth-child(odd) {
+  background-color: #ffffff; /* White for odd rows */
+}
+
+.cat-table ion-badge {
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 12px;
+  background-color: #007bff; 
+  color: #ffffff; 
+}
+
+
+ion-card {
+  margin-right: 15px;
+  background-color: #ffffff; 
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  border: 1px solid black; 
+}
+
+ion-button {
+  margin-top: 10px;
+  background-color: #007bff; 
+  color: #ffffff; 
+  border: 1px solid black; 
+}
+
+ion-button[disabled] {
+  background-color: #6c757d; 
+}
+
+ion-text {
+  color: #dc3545; 
+}
+

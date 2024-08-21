@@ -1,0 +1,125 @@
+<ion-app>
+  <ion-split-pane contentId="main-content">
+
+    <!-- Sidebar Menu -->
+    <ion-menu contentId="main-content" type="overlay">
+      <ion-header>
+        <ion-toolbar color="white">
+          <ion-title>Internship Project</ion-title>
+        </ion-toolbar>
+      </ion-header>
+    
+      <ion-content>
+
+        <ion-list>
+
+          <!-- Profile Section -->
+          <ion-item lines="none" class="profile-item">
+            <ion-avatar slot="start">
+              <img src="https://static.wixstatic.com/media/f3bc42_27c093000d814eba87d855010fd339a7~mv2.png/v1/fit/w_2500,h_1330,al_c/f3bc42_27c093000d814eba87d855010fd339a7~mv2.png" alt="Profile Picture">
+            </ion-avatar>
+            <ion-label>
+              <h2>Hafizuddin Wafi</h2>
+              <p>Trial internship</p>
+            </ion-label>
+          </ion-item>
+    
+          <!-- Menu Items -->
+          <ion-item routerLink="/cat-listing" style="margin-top: 1rem;">
+            <ion-icon name="grid-outline" slot="start"></ion-icon>
+            <ion-label>Cat Listing</ion-label>
+          </ion-item>
+          <ion-item routerLink="/logout">
+            <ion-icon name="log-out-outline" slot="start"></ion-icon>
+            <ion-label>Log Out</ion-label>
+          </ion-item>
+        </ion-list>
+
+      </ion-content>
+
+    </ion-menu>
+
+    <!-- Main Content -->
+    <ion-content id="main-content">
+      <ion-header>
+        <ion-toolbar>
+          <ion-title>Cat Listing</ion-title>
+        </ion-toolbar>
+      </ion-header>
+
+      <div style="padding: 30px;">
+        
+        <ion-grid>
+
+          <!-- Search Bar Container -->
+          <ion-row>
+            <ion-col size="12">
+              <ion-card>
+                <ion-card-content>
+                  <ion-item>
+                    <ion-searchbar placeholder="Search" (ionInput)="onSearchChange($event)"></ion-searchbar>
+                    <ion-select placeholder="Search by" interface="popover" (ionChange)="onFilterChange($event)">
+                      <ion-select-option value="breed">Breed</ion-select-option>
+                      <ion-select-option value="country">Country</ion-select-option>
+                      <ion-select-option value="origin">Origin</ion-select-option>
+                    </ion-select>
+                  </ion-item>
+                </ion-card-content>
+              </ion-card>
+            </ion-col>
+          </ion-row>
+
+          <!-- Display No Results Found when the filteredCats array is empty -->
+          <ion-row *ngIf="filteredCats.length === 0">
+            <ion-col size="12">
+              <ion-card>
+                <ion-card-content>
+                  <ion-text color="danger">
+                    <h2>No results found</h2>
+                  </ion-text>
+                </ion-card-content>
+              </ion-card>
+            </ion-col>
+          </ion-row>
+
+         <!-- Table Header and Data - Display only if there are results -->
+          <ion-row *ngIf="filteredCats.length > 0" style="margin-top: 1rem;">
+            <ion-col size="12">
+              <table class="cat-table" style="height: 100%;">
+                <thead>
+                  <tr>
+                    <th>Bil</th>
+                    <th>Breed</th>
+                    <th>Country</th>
+                    <th>Origin</th>
+                    <th>Coat</th>
+                    <th>Pattern</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let cat of displayedCats; let i = index">
+                    <td>{{ (currentPage - 1) * itemsPerPage + i + 1 }}</td>
+                    <td>{{ cat.breed }}</td>
+                    <td>{{ cat.country }}</td>
+                    <td>{{ cat.origin }}</td>
+                    <td><ion-badge style="background-color: #8B4513; color: white;">{{ cat.coat }}</ion-badge></td>
+                    <td>{{ cat.pattern }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </ion-col>
+          </ion-row>
+
+          <!-- Display only if there are results -->
+          <ion-row *ngIf="filteredCats.length > 0" style="margin-top: 1rem;">
+            <ion-col size="12" class="ion-text-end">
+              <ion-button (click)="previousPage()" [disabled]="currentPage === 1">Previous</ion-button>
+              <ion-button (click)="nextPage()" [disabled]="currentPage * itemsPerPage >= filteredCats.length">Next</ion-button>
+            </ion-col>
+          </ion-row>
+          
+        </ion-grid>
+      </div>
+    </ion-content>
+  </ion-split-pane>
+</ion-app>
